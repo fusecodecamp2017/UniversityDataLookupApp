@@ -104,3 +104,5 @@ jhipster:
 # ===================================================================
 
 application:
+    api-data-gov-key: x5tFvupBUk6sh80ZWL2o6m9B1rVGTpM9jYYTWOC8
+    api-data-gov-url: https://api.data.gov/ed/collegescorecard/v1/schools.json
