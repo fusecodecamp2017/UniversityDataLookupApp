@@ -4,6 +4,19 @@ $font-path: "../assets/fonts";
 
 @import "ionic.globals";
 
+@font-face {
+  font-family: Roboto;
+  src: url("../assets/fonts/roboto/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: IndieFlower;
+  src: url("../assets/fonts/indie-flower/IndieFlower.ttf");
+}
+
+* {
+  font-family: 'Roboto' !important;
+}
 
 // Shared Variables
 // --------------------------------------------------

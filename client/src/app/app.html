@@ -1,7 +1,7 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <ion-title>Find</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -15,5 +15,8 @@
 
 </ion-menu>
 
+<!-- http://ionicframework.com/docs/api/navigation/NavController/ -->
+<!-- The simplest way to navigate through an app is to create and initialize a new nav controller using the <ion-nav> component. ion-nav extends the NavController class. -->
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<!-- Set ion-nav root property to rootPage variable -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

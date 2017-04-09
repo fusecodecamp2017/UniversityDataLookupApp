@@ -10,8 +10,8 @@ import { ListPage } from '../pages/list/list';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  @ViewChild(Nav) nav: Nav;
-
+  @ViewChild(Nav) nav: Nav; // Reference the child NavController component as variable nav so we can call methods on it. Child components in our view can be accessed from our parent component easily with @ViewChild.
+                            // NavController is child since we have the <ion-nav> tag in app.html.
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}>;
