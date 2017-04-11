@@ -1,3 +1,29 @@
-page-search-home {
-
+.page-home {
+  h2 {
+    font-size: 4vh;
+    text-align: center;
+  }
+  p {
+    font-size: 2.5vh;
+    padding-top: 2vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-bottom: 2vh;
+    text-align: center;
+  }
+  .spacer {
+    height: 8vh;
+    min-height: 8vh;
+  }
+  .flex-container {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  > .flex-row {
+    width: auto;
+    border: 1px solid blue;
+  }
 }

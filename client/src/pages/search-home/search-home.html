@@ -7,5 +7,18 @@
   </ion-navbar>
 </ion-header>
 
-
-<ion-nav [root]="rootSearchWizardPage"></ion-nav>
+<ion-content padding class="page-home">
+  <h2>Welcome to find my College app</h2>
+  <p>
+    Here you'll be able to search for a college based on location, tuition, and admission qualifications that matches your needs.
+  </p>
+  <p>
+    Click below to get started and find the College that is right for you!
+  </p>
+  <div class="spacer">&nbsp;</div>
+  <div class="flex-container">
+    <div class="flex-row">
+      <button ion-button color="secondary" (click)="startSearch()">Start Search</button>
+    </div>
+  </div>
+</ion-content>

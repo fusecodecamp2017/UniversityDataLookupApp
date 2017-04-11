@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>search-wizard-page</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="search-wizard-page">
+  <ion-slides pager="true" paginationType="bullets" effect="slide"> <!-- Add dots at bottom of slides //-->
+    <ion-slide>
+      <ion-toolbar>
+        <ion-buttons end class="toolbar-background">
+          <button ion-button color="primary" (click)="onNextSlide()" class="skip-btn">Skip</button>
+        </ion-buttons>
+      </ion-toolbar>
+      <h2 class="slide-title">You can search by city, state or zip code, if you want</h2> 
+    </ion-slide>
+    <ion-slide>
+      <ion-toolbar>
+        <ion-buttons left>
+          <button ion-button color="primary" (click)="onPrevSlide()">Back</button>
+        </ion-buttons>        
+      </ion-toolbar>
+      <h2 class="slide-title">Ready to Play?</h2>
+      <button ion-button large clear icon-right color="primary">
+        Continue
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

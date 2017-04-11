@@ -4,9 +4,9 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { ListPage } from '../pages/list/list';
-import { HomePage } from '../pages/home/home';
 import { SearchHomePage } from '../pages/search-home/search-home';
-import { SearchWizardPageOne } from '../pages/search-wizard-page-one/search-wizard-page-one';
+import { SearchNavController } from '../pages/search-nav-controller/search-nav-controller';
+import { SearchWizardPage } from '../pages/search-wizard-page/search-wizard-page';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,9 +14,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 @NgModule({
   declarations: [
     MyApp,
+    SearchNavController,
     SearchHomePage,
-    HomePage,
-    SearchWizardPageOne,
+    SearchWizardPage,
     ListPage
   ],
   imports: [
@@ -26,9 +26,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    SearchNavController,
     SearchHomePage,
-    HomePage,
-    SearchWizardPageOne,
+    SearchWizardPage,
     ListPage
   ],
   providers: [
