@@ -12,7 +12,47 @@
           <button ion-button color="primary" (click)="onNextSlide()" class="skip-btn">Skip</button>
         </ion-buttons>
       </ion-toolbar>
-      <h2 class="slide-title">You can search by city, state or zip code, if you want</h2> 
+      <h2 class="slide-title">Add city, state or zip code to your search criteria</h2>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label color="primary" stacked>City:</ion-label>
+              <ion-input type="text" placeholder="Enter City Name" [(ngModel)]="city"></ion-input>
+            </ion-item>            
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label color="primary" stacked>State:</ion-label>
+              <ion-input type="text" placeholder="Enter State Name" [(ngModel)]="state"></ion-input>
+            </ion-item>            
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="or-divider">OR</div>
+          </ion-col>
+        </ion-row>        
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label color="primary" stacked>Zip Code:</ion-label>
+              <ion-input type="text" placeholder="Enter Zip Code" [(ngModel)]="zipCode"></ion-input>
+            </ion-item>            
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="spacer">&nbsp;</div>
+            <button ion-button icon-right (click)="onNextSlide(true)">
+              Next >
+              <!-- <ion-icon name="arrow-forward"></ion-icon> //-->
+            </button>
+          </ion-col>
+        </ion-row>                      
+      </ion-grid>
     </ion-slide>
     <ion-slide>
       <ion-toolbar>

@@ -1,4 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Slides } from 'ionic-angular';
 
@@ -16,14 +17,23 @@ export class SearchWizardPage {
 
   @ViewChild(Slides) slides: Slides;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {    
+  city: string;
+  state: string;
+  zipCode: string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage) {    
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchWizardPage');
   }
 
-  onNextSlide() {
+  onNextSlide(saveQueryData) {
+    if( true == saveQueryData) {
+      this.storage.set('city', this.city);
+      this.storage.set('state', this.state);
+      this.storage.set('zipCode', this.zipCode);
+    }
     this.slides.slideNext(500);
   }
 
