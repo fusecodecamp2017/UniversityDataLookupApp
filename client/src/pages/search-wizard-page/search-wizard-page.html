@@ -46,7 +46,7 @@
         <ion-row>
           <ion-col>
             <div class="spacer">&nbsp;</div>
-            <button ion-button icon-right (click)="onNextSlide(true)">
+            <button ion-button icon-right (click)="onNextSlide()">
               Next >
               <!-- <ion-icon name="arrow-forward"></ion-icon> //-->
             </button>
@@ -60,10 +60,10 @@
           <button ion-button color="primary" (click)="onPrevSlide()">Back</button>
         </ion-buttons>        
       </ion-toolbar>
-      <h2 class="slide-title">Ready to Play?</h2>
-      <button ion-button large clear icon-right color="primary">
-        Continue
-        <ion-icon name="arrow-forward"></ion-icon>
+      <h2 class="slide-title">Get Data</h2>
+      <button ion-button large clear icon-right color="primary" (click)="onGetUniversityData()">
+        Get It
+        <!-- <ion-icon name="arrow-forward"></ion-icon> //-->
       </button>
     </ion-slide>
   </ion-slides>

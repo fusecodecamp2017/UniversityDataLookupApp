@@ -21,7 +21,7 @@ import java.net.URISyntaxException;
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     private final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
-    @ExceptionHandler(value = {RuntimeException.class, URISyntaxException.class, IOException.class})
+    @ExceptionHandler(value = {Exception.class, RuntimeException.class, URISyntaxException.class, IOException.class})
     protected ResponseEntity<Object> handleError(RuntimeException ex, WebRequest request) {
         ExceptionResponse exceptionResponse = new ExceptionResponse(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage());
         log.error("Code: " + exceptionResponse.getCode() + " message: " + exceptionResponse.getMessage());

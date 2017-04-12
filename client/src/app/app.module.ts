@@ -9,6 +9,9 @@ import { ListPage } from '../pages/list/list';
 import { SearchHomePage } from '../pages/search-home/search-home';
 import { SearchNavController } from '../pages/search-nav-controller/search-nav-controller';
 import { SearchWizardPage } from '../pages/search-wizard-page/search-wizard-page';
+import { SearchWizardResultPage } from '../pages/search-wizard-result-page/search-wizard-result-page';
+
+import { HttpUniversityService } from '../providers/http-university-service';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -19,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SearchNavController,
     SearchHomePage,
     SearchWizardPage,
+    SearchWizardResultPage,
     ListPage
   ],
   imports: [
@@ -33,11 +37,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SearchNavController,
     SearchHomePage,
     SearchWizardPage,
+    SearchWizardResultPage,
     ListPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    HttpUniversityService, // Make HttpService globally available.
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

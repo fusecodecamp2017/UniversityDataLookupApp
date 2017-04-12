@@ -35,6 +35,7 @@ public class DataGovUtil {
             }
             processedUrl.append("school.city=");
             processedUrl.append(city.replace(" ", "%20"));
+            queryParamAppended = true;
         }
         if(!isStringNullOrEmpty(state)) {
             if(queryParamAppended) {
@@ -42,6 +43,7 @@ public class DataGovUtil {
             }
             processedUrl.append("school.zip=");
             processedUrl.append(zip);
+            queryParamAppended = true;
         }
 
         if(queryParamAppended) {
@@ -63,9 +65,11 @@ public class DataGovUtil {
         processedUrl.append("&");
         processedUrl.append("per_page=");
         processedUrl.append(pageable.getPageSize());
-        processedUrl.append("&");
-        processedUrl.append("_sort=");
-        processedUrl.append(sort);
+        if(!isStringNullOrEmpty(sort)) {
+            processedUrl.append("&");
+            processedUrl.append("_sort=");
+            processedUrl.append(sort);
+        }
 
         return processedUrl.toString();
     }
