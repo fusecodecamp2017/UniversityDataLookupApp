@@ -6,4 +6,15 @@
   .icon-item {
     font-size: 3vh;
   }
+  p {
+    display: inline-block;
+  }
+  .detail-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .detail-item {
+    flex: 1;
+  }
 }

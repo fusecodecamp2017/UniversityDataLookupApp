@@ -1,5 +1,7 @@
 package com.fusecodecamp.lookup.service.dto;
 
+import java.util.List;
+
 public class GovDataResponseDTO {
 
     private int total;
@@ -9,6 +11,8 @@ public class GovDataResponseDTO {
     private int perPage;
 
     private String results;
+
+    private List<UniversityDTO> universityDTOList;
 
     public int getTotal() {
         return total;
@@ -40,5 +44,13 @@ public class GovDataResponseDTO {
 
     public void setResults(String results) {
         this.results = results;
+    }
+
+    public List<UniversityDTO> getUniversityDTOList() {
+        return universityDTOList;
+    }
+
+    public void setUniversityDTOList(List<UniversityDTO> universityDTOList) {
+        this.universityDTOList = universityDTOList;
     }
 }

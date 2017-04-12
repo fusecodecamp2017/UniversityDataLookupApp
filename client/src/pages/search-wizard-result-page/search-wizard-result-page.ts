@@ -32,6 +32,10 @@ export class SearchWizardResultPage {
     this.httpUniversityService.queryUniversities(this.queryCriteria)
       .then((data) => { 
         this.universityData = data;
+        for( var i = 0; i < this.universityData.length; i++ ) {
+          var university = this.universityData[i];
+          university.address = university.city + " " + university.state + ", " + university.zipCode;
+        }
         console.log('University data: ' + data);
       })
       .catch((e) => {

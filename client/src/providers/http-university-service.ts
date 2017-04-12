@@ -4,6 +4,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { QueryCriteria } from './dto/query-criteria';
 import { UniversityData } from './dto/university-data';
+import { JsonConvert } from "json2typescript"
 
 /*
   Generated class for the HttpService provider.

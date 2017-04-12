@@ -2,6 +2,7 @@ package com.fusecodecamp.lookup.service;
 
 import com.fusecodecamp.lookup.config.ApplicationProperties;
 import com.fusecodecamp.lookup.service.dto.GovDataResponseDTO;
+import com.fusecodecamp.lookup.service.dto.UniversityDTO;
 import com.fusecodecamp.lookup.service.util.DataGovUtil;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by stephan.haller on 4/5/17.
@@ -60,12 +63,25 @@ public class UniversityLookupService {
         JsonElement jelement = new JsonParser().parse(result.toString());
         JsonObject rootNode = jelement.getAsJsonObject();
         JsonObject metadataNode = rootNode.getAsJsonObject("metadata");
-        JsonArray resultsNode = rootNode.getAsJsonArray("results");
+
+        List<UniversityDTO> universityDTOList = new ArrayList<>();
+        JsonArray universityArray = rootNode.getAsJsonArray("results");
+        for( JsonElement universityEl : universityArray ) {
+            UniversityDTO universityDTO = new UniversityDTO();
+            JsonObject universityObj = universityEl.getAsJsonObject();
+            universityDTO.setId(universityObj.get("id").getAsLong());
+            universityDTO.setName(universityObj.get("school.name").getAsString());
+            universityDTO.setCity(universityObj.get("school.city").getAsString());
+            universityDTO.setState(universityObj.get("school.state").getAsString());
+            universityDTO.setZipCode(universityObj.get("school.zip").getAsString());
+
+            universityDTOList.add(universityDTO);
+        }
 
         responseDTO.setTotal(metadataNode.get("total").getAsInt());
         responseDTO.setPage(metadataNode.get("page").getAsInt());
         responseDTO.setPerPage(metadataNode.get("per_page").getAsInt());
-        responseDTO.setResults(resultsNode.toString());
+        responseDTO.setUniversityDTOList(universityDTOList);
 
         return responseDTO;
     }
