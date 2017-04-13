@@ -22,9 +22,12 @@ export class SearchWizardResultPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private httpUniversityService: HttpUniversityService) {
     this.queryCriteria = new QueryCriteria();
+    this.queryCriteria.name = navParams.get('name');
     this.queryCriteria.city = navParams.get('city');
     this.queryCriteria.state = navParams.get('state');
     this.queryCriteria.zipCode = navParams.get('zipCode');
+    this.queryCriteria.sortField = navParams.get('sortField');
+    this.queryCriteria.sortOrder = navParams.get('sortOrder');    
   }
 
   ionViewDidLoad() {

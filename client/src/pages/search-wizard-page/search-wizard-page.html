@@ -12,24 +12,82 @@
           <button ion-button color="primary" (click)="onNextSlide()" class="skip-btn">Skip</button>
         </ion-buttons>
       </ion-toolbar>
-      <h2 class="slide-title">Add city, state or zip code to your search criteria</h2>
+      <h2 class="slide-title">College name and location</h2>
       <ion-grid>
         <ion-row>
           <ion-col>
             <ion-item>
-              <ion-label color="primary" stacked>City:</ion-label>
-              <ion-input type="text" placeholder="Enter City Name" [(ngModel)]="city"></ion-input>
+              <ion-label color="primary" stacked>Name:</ion-label>
+              <ion-input type="text" placeholder="College Name" [(ngModel)]="name"></ion-input>
             </ion-item>            
           </ion-col>
-        </ion-row>
+        </ion-row>        
         <ion-row>
           <ion-col>
             <ion-item>
-              <ion-label color="primary" stacked>State:</ion-label>
-              <ion-input type="text" placeholder="Enter State Name" [(ngModel)]="state"></ion-input>
+              <ion-label color="primary" stacked>City:</ion-label>
+              <ion-input type="text" placeholder="City Name" [(ngModel)]="city"></ion-input>
             </ion-item>            
           </ion-col>
         </ion-row>
+        <ion-list class="ion-list">
+          <ion-item>
+            <ion-label>State</ion-label>          
+            <ion-select [(ngModel)]="state">
+              <ion-option value="AL">Alabama</ion-option>
+              <ion-option value="AK">Alaska</ion-option>
+              <ion-option value="AZ">Arizona</ion-option>
+              <ion-option value="AR">Arkansas</ion-option>
+              <ion-option value="CA">California</ion-option>
+              <ion-option value="CO">Colorado</ion-option>
+              <ion-option value="CT">Connecticut</ion-option>
+              <ion-option value="DE">Delaware</ion-option>
+              <ion-option value="DC">District of Columbia</ion-option>
+              <ion-option value="FL">Florida</ion-option>
+              <ion-option value="GA">Georgia</ion-option>
+              <ion-option value="HI">Hawaii</ion-option>
+              <ion-option value="ID">Idaho</ion-option>
+              <ion-option value="IL">Illinois</ion-option>
+              <ion-option value="IN">Indiana</ion-option>
+              <ion-option value="IA">Iowa</ion-option>
+              <ion-option value="KS">Kansas</ion-option>              
+              <ion-option value="KY">Kentucky</ion-option>              
+              <ion-option value="LA">Louisiana</ion-option>              
+              <ion-option value="ME">Maine</ion-option>              
+              <ion-option value="MD">Maryland</ion-option>              
+              <ion-option value="MA">Massachusetts</ion-option>              
+              <ion-option value="MI">Michigan</ion-option>              
+              <ion-option value="MN">Minnesota</ion-option>              
+              <ion-option value="MS">Mississippi</ion-option>              
+              <ion-option value="MO">Missouri</ion-option>         
+              <ion-option value="MT">Montana</ion-option>              
+              <ion-option value="NE">Nebraska</ion-option>              
+              <ion-option value="NV">Nevada</ion-option>              
+              <ion-option value="NH">New Hampshire</ion-option>         
+              <ion-option value="NJ">New Jersey</ion-option>              
+              <ion-option value="NM">New Mexico</ion-option>              
+              <ion-option value="NY">New York</ion-option>              
+              <ion-option value="NC">North Carolina</ion-option>         
+              <ion-option value="ND">North Dakota</ion-option>              
+              <ion-option value="OH">Ohio</ion-option>              
+              <ion-option value="OK">Oklahoma</ion-option>              
+              <ion-option value="OR">Oregon</ion-option>              
+              <ion-option value="PA">Pennsylvania</ion-option>              
+              <ion-option value="RI">Rhode Island</ion-option>              
+              <ion-option value="SC">South Carolina</ion-option>         
+              <ion-option value="SD">South Dakota</ion-option>         
+              <ion-option value="TN">Tennessee</ion-option>         
+              <ion-option value="TX">Texas</ion-option>         
+              <ion-option value="UT">Utah</ion-option>                       
+              <ion-option value="VT">Vermont</ion-option>                       
+              <ion-option value="VA">Virginia</ion-option>                       
+              <ion-option value="WA">Washington</ion-option>                       
+              <ion-option value="WV">West Virginia</ion-option>                       
+              <ion-option value="WI">Wisconsin</ion-option>                       
+              <ion-option value="WY">Wyoming</ion-option>                       
+            </ion-select>
+          </ion-item>
+        </ion-list>        
         <ion-row>
           <ion-col>
             <div class="or-divider">OR</div>
@@ -60,7 +118,36 @@
           <button ion-button color="primary" (click)="onPrevSlide()">Back</button>
         </ion-buttons>        
       </ion-toolbar>
-      <h2 class="slide-title">Get Data</h2>
+      <h2 class="slide-title">Sorting</h2>
+      <ion-grid>
+        <ion-list class="ion-list">
+          <ion-item>
+            <ion-label>Sort</ion-label>      
+            <ion-select [(ngModel)]="sortField">
+              <ion-option value="name">College Name</ion-option>
+              <ion-option value="city">City</ion-option>
+              <ion-option value="state">State</ion-option>
+              <ion-option value="zip">Zip Code</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+        <ion-list class="ion-list">
+          <ion-item>
+            <ion-label>Order</ion-label>      
+            <ion-select [(ngModel)]="sortOrder">
+              <ion-option value="asc">Ascending</ion-option>
+              <ion-option value="desc">Descending</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>                 
+        <ion-row>
+          <ion-col>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
       <button ion-button large clear icon-right color="primary" (click)="onGetUniversityData()">
         Get It
         <!-- <ion-icon name="arrow-forward"></ion-icon> //-->

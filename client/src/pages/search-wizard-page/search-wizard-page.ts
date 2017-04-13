@@ -19,9 +19,13 @@ export class SearchWizardPage {
 
   @ViewChild(Slides) slides: Slides;
 
+  name: string;
   city: string;
   state: string;
   zipCode: string;
+
+  sortField: string;
+  sortOrder: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {    
   }
@@ -40,7 +44,12 @@ export class SearchWizardPage {
 
   onGetUniversityData() {
     let queryCriteria = new QueryCriteria();
+    queryCriteria.name = this.name;
     queryCriteria.city = this.city;
+    queryCriteria.state = this.state;
+    queryCriteria.zipCode = this.zipCode;
+    queryCriteria.sortField = this.sortField;
+    queryCriteria.sortOrder = this.sortOrder;
 
     this.navCtrl.push(SearchWizardResultPage, queryCriteria);
   } 

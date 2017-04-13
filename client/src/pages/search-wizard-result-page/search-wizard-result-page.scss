@@ -17,4 +17,15 @@
   .detail-item {
     flex: 1;
   }
+  .title {
+    max-width: 90%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;    
+  }
+  .circle-right {
+    float: right;
+    font-size: 3vh;
+    margin-top: -1vh;    
+  }
 }

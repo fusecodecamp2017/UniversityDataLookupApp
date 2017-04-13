@@ -41,6 +41,14 @@ public class DataGovUtil {
             if(queryParamAppended) {
                 processedUrl.append("&");
             }
+            processedUrl.append("school.state=");
+            processedUrl.append(state);
+            queryParamAppended = true;
+        }
+        if(!isStringNullOrEmpty(zip)) {
+            if(queryParamAppended) {
+                processedUrl.append("&");
+            }
             processedUrl.append("school.zip=");
             processedUrl.append(zip);
             queryParamAppended = true;

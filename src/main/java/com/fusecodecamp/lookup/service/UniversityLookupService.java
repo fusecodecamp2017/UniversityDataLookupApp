@@ -12,6 +12,8 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -29,6 +31,8 @@ import java.util.List;
 @Service
 public class UniversityLookupService {
 
+    private final Logger log = LoggerFactory.getLogger(UniversityLookupService.class);
+
     @Autowired
     private ApplicationProperties applicationProperties;
 
@@ -43,6 +47,7 @@ public class UniversityLookupService {
         String dataGovUrl = DataGovUtil.processDataGovUrl(applicationProperties.getApiDataGovUrl(), name, city, state, zip, inStateCost, outStateCost, pageable, sort);
         HttpGet httpGet = new HttpGet(dataGovUrl);
         httpGet.addHeader("X-Api-Key", applicationProperties.getApiDataGovKey());
+        log.info("UniversityLookupService.getAllBySearchCriteria() - Api.data.gov Url: " + dataGovUrl );
         CloseableHttpResponse response = httpclient.execute(httpGet);
 
         try {

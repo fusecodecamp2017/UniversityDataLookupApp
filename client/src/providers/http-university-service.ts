@@ -25,13 +25,61 @@ export class HttpUniversityService {
   }
 
   queryUniversities(queryCriteria: QueryCriteria): Promise<UniversityData[]> {
+    var addedQueryParam = false;
     var queryUrl = this.universityUrl;
-    if( queryCriteria.city ) {
+    if( queryCriteria.name ) {
       queryUrl += '?';
-      queryUrl += 'city=';
-      queryUrl += queryCriteria.city.replace(/ /g , "%20");;
+      queryUrl += 'name=';
+      queryUrl += queryCriteria.name.replace(/ /g , "%20");
+      addedQueryParam = true;
     }
-
+    if( queryCriteria.city ) {
+      if( addedQueryParam ) {
+        queryUrl += '&';
+      }
+      else {
+        queryUrl += '?';
+      }
+      queryUrl += 'city=';
+      queryUrl += queryCriteria.city.replace(/ /g , "%20");
+    }
+    if( queryCriteria.state ) {
+      if( addedQueryParam ) {
+        queryUrl += '&';
+      }
+      else {
+        queryUrl += '?';
+      }
+      queryUrl += 'state=';
+      queryUrl += queryCriteria.state.replace(/ /g , "%20");
+    }
+    if( queryCriteria.zipCode ) {
+      if( addedQueryParam ) {
+        queryUrl += '&';
+      }
+      else {
+        queryUrl += '?';
+      }
+      queryUrl += 'zip=';
+      queryUrl += queryCriteria.zipCode.replace(/ /g , "%20");
+    }
+    if( queryCriteria.sortField && queryCriteria.sortOrder ) {
+      if( addedQueryParam ) {
+        queryUrl += '&';
+      }
+      else {
+        queryUrl += '?';
+      }
+      queryUrl += 'sort=';
+      queryUrl += queryCriteria.sortField + ":" + queryCriteria.sortOrder;
+    }
+    if( addedQueryParam ) {
+      queryUrl += '&';
+    }
+    else {
+      queryUrl += '?';
+    }
+    queryUrl += 'page=0&size=100';     
     return this.http.get(queryUrl, {headers: this.headers}) // The Angular http.get returns an RxJS Observable. Observables are a powerful way to manage asynchronous data flows. You'll read about Observables later in this page.
             .toPromise() // Convert the Observable to a Promise using the toPromise operator. The Angular Observable doesn't have toPromise() out of box, to get this functionality you have to import it as done above.
             .then(response => response.json() as UniversityData[]) // Extract data from response by calling json(). The JSON we created has a top level data property that contains the Hero array.
