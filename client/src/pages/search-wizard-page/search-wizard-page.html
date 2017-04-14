@@ -11,25 +11,28 @@
         <ion-buttons end class="toolbar-background">
           <button ion-button color="primary" (click)="onNextSlide()" class="skip-btn">Skip</button>
         </ion-buttons>
+        <ion-title>College and Location</ion-title>
       </ion-toolbar>
-      <h2 class="slide-title">College name and location</h2>
+      <!-- <h2 class="slide-title">College and Location</h2> //-->
       <ion-grid>
         <ion-row>
           <ion-col>
             <ion-item>
               <ion-label color="primary" stacked>Name:</ion-label>
-              <ion-input type="text" placeholder="College Name" [(ngModel)]="name"></ion-input>
+              <ion-input type="text" placeholder="Enter College Name" [(ngModel)]="name"></ion-input>
             </ion-item>            
           </ion-col>
-        </ion-row>        
+        </ion-row>
+        <div class="spacer-small">&nbsp;</div>       
         <ion-row>
           <ion-col>
             <ion-item>
               <ion-label color="primary" stacked>City:</ion-label>
-              <ion-input type="text" placeholder="City Name" [(ngModel)]="city"></ion-input>
+              <ion-input type="text" placeholder="Enter City Name" [(ngModel)]="city"></ion-input>
             </ion-item>            
           </ion-col>
         </ion-row>
+        <div class="spacer-xsmall">&nbsp;</div>
         <ion-list class="ion-list">
           <ion-item>
             <ion-label>State</ion-label>          
@@ -103,22 +106,83 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <div class="spacer">&nbsp;</div>
-            <button ion-button icon-right (click)="onNextSlide()">
-              Next >
-              <!-- <ion-icon name="arrow-forward"></ion-icon> //-->
+            <div class="spacer-small">&nbsp;</div>
+            <button ion-button icon-right large color="primary" (click)="onNextSlide()">
+              Next
+              <ion-icon name="arrow-forward"></ion-icon>
             </button>
           </ion-col>
         </ion-row>                      
       </ion-grid>
     </ion-slide>
+
     <ion-slide>
       <ion-toolbar>
+        <ion-title class="toolbar-title-center">Tuition</ion-title>
         <ion-buttons left>
           <button ion-button color="primary" (click)="onPrevSlide()">Back</button>
         </ion-buttons>        
       </ion-toolbar>
-      <h2 class="slide-title">Sorting</h2>
+      <!-- <h2 class="slide-title">Tuition</h2> //-->
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="or-divider">In-State Tuition</div>
+          </ion-col>
+        </ion-row>         
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label color="primary" stacked>Min (Thousands):</ion-label>
+              <ion-input type="number" placeholder="Minimum Tuition" [(ngModel)]="minTuition"></ion-input>
+            </ion-item>            
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label color="primary" stacked>Max (Thousands):</ion-label>
+              <ion-input type="number" placeholder="Maximum Tuition" [(ngModel)]="maxTuition"></ion-input>
+            </ion-item>            
+          </ion-col>          
+        </ion-row>
+        <div class="spacer">&nbsp;</div>
+        <ion-row>
+          <ion-col>
+            <div class="or-divider">Out-State Tuition</div>
+          </ion-col>
+        </ion-row>         
+        <ion-row>
+          <ion-col>
+            <ion-item>
+              <ion-label color="primary" stacked>Min (Thousands):</ion-label>
+              <ion-input type="number" placeholder="Minimum Tuition" [(ngModel)]="minTuition"></ion-input>
+            </ion-item>            
+          </ion-col>
+          <ion-col>
+            <ion-item>
+              <ion-label color="primary" stacked>Max (Thousands):</ion-label>
+              <ion-input type="number" placeholder="Maximum Tuition" [(ngModel)]="maxTuition"></ion-input>
+            </ion-item>            
+          </ion-col>          
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <div class="spacer">&nbsp;</div>
+            <button ion-button icon-right large color="primary" (click)="onNextSlide()">
+              Next
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>        
+      </ion-grid>
+    </ion-slide>
+    <ion-slide>
+      <ion-toolbar>
+        <ion-title>Sorting</ion-title>
+        <ion-buttons left>
+          <button ion-button color="primary" (click)="onPrevSlide()">Back</button>
+        </ion-buttons>        
+      </ion-toolbar>
+      <!-- <h2 class="slide-title">Sorting</h2> //-->
       <ion-grid>
         <ion-list class="ion-list">
           <ion-item>
@@ -142,16 +206,14 @@
         </ion-list>                 
         <ion-row>
           <ion-col>
-
+            <div class="spacer">&nbsp;</div>
+            <button ion-button large icon-right color="primary" (click)="onGetUniversityData()">
+              Find Colleges
+              <ion-icon name="arrow-forward"></ion-icon>
+            </button>
           </ion-col>
         </ion-row>
       </ion-grid>
-
-
-      <button ion-button large clear icon-right color="primary" (click)="onGetUniversityData()">
-        Get It
-        <!-- <ion-icon name="arrow-forward"></ion-icon> //-->
-      </button>
     </ion-slide>
   </ion-slides>
 </ion-content>

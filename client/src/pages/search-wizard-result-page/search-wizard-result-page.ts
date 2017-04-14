@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { QueryCriteria } from '../../providers/dto/query-criteria';
 import { UniversityData } from '../../providers/dto/university-data';
 import { HttpUniversityService } from '../../providers/http-university-service';
+import { LoadingController, Loading } from 'ionic-angular';
 
 /**
  * Generated class for the SearchWizardResultPage page.
@@ -19,8 +20,9 @@ export class SearchWizardResultPage {
 
   private queryCriteria: QueryCriteria;
   private universityData: UniversityData[];
+  private loading: Loading;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private httpUniversityService: HttpUniversityService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private httpUniversityService: HttpUniversityService, private loadingCtrl: LoadingController) {
     this.queryCriteria = new QueryCriteria();
     this.queryCriteria.name = navParams.get('name');
     this.queryCriteria.city = navParams.get('city');
@@ -32,6 +34,13 @@ export class SearchWizardResultPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SearchWizardResultPage');
+
+    this.loading = this.loadingCtrl.create({
+      content: 'Loading Colleges...',
+      dismissOnPageChange: false
+    });
+    this.loading.present();
+
     this.httpUniversityService.queryUniversities(this.queryCriteria)
       .then((data) => { 
         this.universityData = data;
@@ -40,9 +49,11 @@ export class SearchWizardResultPage {
           university.address = university.city + " " + university.state + ", " + university.zipCode;
         }
         console.log('University data: ' + data);
+        this.loading.dismiss();
       })
       .catch((e) => {
         console.log('Failed to retrieve university data. Error: ' + e);
+        this.loading.dismiss();
       });
   }
 

@@ -11,12 +11,24 @@
   }
   .skip-btn {
     padding-right: 5%;
+    padding-top: 2%;
+  }
+  .toolbar-title-center {
+    margin-right: 15%;
   }
   .or-divider {
     text-align: center;
     font-size: 2vh;
-    padding-top: 3vh;
+    padding-top: 1vh;
     padding-bottom: 1vh;
+  }
+  .spacer-xsmall {
+    height: 2vh;
+    min-height: 2vh;    
+  }  
+  .spacer-small {
+    height: 4vh;
+    min-height: 4vh;    
   }
   .spacer {
     height: 8vh;
