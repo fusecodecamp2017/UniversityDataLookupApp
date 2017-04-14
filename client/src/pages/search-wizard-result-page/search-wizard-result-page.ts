@@ -29,7 +29,11 @@ export class SearchWizardResultPage {
     this.queryCriteria.state = navParams.get('state');
     this.queryCriteria.zipCode = navParams.get('zipCode');
     this.queryCriteria.sortField = navParams.get('sortField');
-    this.queryCriteria.sortOrder = navParams.get('sortOrder');    
+    this.queryCriteria.sortOrder = navParams.get('sortOrder');
+    this.queryCriteria.inStateMinTuition = navParams.get('inStateMinTuition');
+    this.queryCriteria.inStateMaxTuition = navParams.get('inStateMaxTuition');
+    this.queryCriteria.outStateMinTuition = navParams.get('outStateMinTuition');
+    this.queryCriteria.outStateMaxTuition = navParams.get('outStateMaxTuition');
   }
 
   ionViewDidLoad() {

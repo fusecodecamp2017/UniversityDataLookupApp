@@ -3,6 +3,10 @@ export class QueryCriteria {
   city: string;
   state: string;
   zipCode: string;
+  inStateMinTuition: number;
+  inStateMaxTuition: number;
+  outStateMinTuition: number;
+  outStateMaxTuition: number;
   sortField: string;
   sortOrder: string;
 }

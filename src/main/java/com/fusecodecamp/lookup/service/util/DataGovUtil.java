@@ -5,11 +5,40 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 /**
  * Created by stephan.haller on 4/6/17.
  */
 public class DataGovUtil {
+
+    static {
+        ArrayList<String> staticFieldList = new ArrayList<>();
+        staticFieldList.add("id");
+        staticFieldList.add("school.name");
+        staticFieldList.add("school.city");
+        staticFieldList.add("school.state");
+        staticFieldList.add("school.zip");
+        staticFieldList.add("school.accreditor");
+        staticFieldList.add("school.school_url");
+        staticFieldList.add("school.price_calculator_url");
+        staticFieldList.add("school.main_campus");
+        staticFieldList.add("school.branches");
+        staticFieldList.add("school.degrees_awarded.predominant");
+        staticFieldList.add("school.degrees_awarded.highest");
+        staticFieldList.add("school.ownership");
+        staticFieldList.add("school.region_id"); // TODO
+        staticFieldList.add("school.locale");
+        staticFieldList.add("school.carnegie_basic"); // TODO
+        staticFieldList.add("school.religious_affiliation"); // TODO
+        staticFieldList.add("2014.admissions.admission_rate.overall");
+        staticFieldList.add("2014.cost.tuition.in_state");
+        staticFieldList.add("2014.cost.tuition.out_of_state");
+
+        dataSetFieldList = staticFieldList;
+    }
+
+    private static final ArrayList<String> dataSetFieldList;
 
     public static boolean isStringNullOrEmpty(String str) {
 
@@ -19,7 +48,7 @@ public class DataGovUtil {
         return false;
     }
 
-    public static String processDataGovUrl( String url, String name, String city, String state, String zip, String inStateCost, String outStateCost, Pageable pageable, String sort ) {
+    public static String processDataGovUrl( String url, String name, String city, String state, String zip, String inStateCostRange, String outStateCostRange, Pageable pageable, String sort ) {
 
         boolean queryParamAppended = false;
         StringBuffer processedUrl = new StringBuffer(url + "?");
@@ -53,11 +82,27 @@ public class DataGovUtil {
             processedUrl.append(zip);
             queryParamAppended = true;
         }
+        if(!isStringNullOrEmpty(inStateCostRange)) {
+            if(queryParamAppended) {
+                processedUrl.append("&");
+            }
+            processedUrl.append("2014.cost.tuition.in_state__range=");
+            processedUrl.append(inStateCostRange);
+            queryParamAppended = true;
+        }
+        if(!isStringNullOrEmpty(outStateCostRange)) {
+            if(queryParamAppended) {
+                processedUrl.append("&");
+            }
+            processedUrl.append("2014.cost.tuition.out_of_state__range=");
+            processedUrl.append(outStateCostRange);
+            queryParamAppended = true;
+        }
 
         if(queryParamAppended) {
             processedUrl.append("&");
         }
-        processedUrl.append("_fields=id,school.name,school.city,school.state,school.zip,school.school_url,school.price_calculator_url,school.degrees_awarded.highest,school.ownership");
+        processedUrl.append(generateDataSetFieldList());
         queryParamAppended = true;
 
         return appendPageableAndSortParams(pageable, sort, queryParamAppended, processedUrl);
@@ -108,5 +153,18 @@ public class DataGovUtil {
 
     private static String generateUri(String baseUrl, int page, int size) throws URISyntaxException {
         return UriComponentsBuilder.fromUriString(baseUrl).queryParam("page", page).queryParam("size", size).toUriString();
+    }
+
+    private static String generateDataSetFieldList() {
+        StringBuilder stringBuilder = new StringBuilder("_fields=");
+        for( int i = 0; i < dataSetFieldList.size(); i++) {
+            String dataSetField = dataSetFieldList.get(i);
+            stringBuilder.append(dataSetField);
+            if( i < dataSetFieldList.size() - 1) {
+                stringBuilder.append(",");
+            }
+        }
+
+        return stringBuilder.toString();
     }
 }

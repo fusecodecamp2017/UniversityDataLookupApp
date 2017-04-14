@@ -34,52 +34,44 @@ export class HttpUniversityService {
       addedQueryParam = true;
     }
     if( queryCriteria.city ) {
-      if( addedQueryParam ) {
-        queryUrl += '&';
-      }
-      else {
-        queryUrl += '?';
-      }
+      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);
       queryUrl += 'city=';
       queryUrl += queryCriteria.city.replace(/ /g , "%20");
+      addedQueryParam = true;
     }
     if( queryCriteria.state ) {
-      if( addedQueryParam ) {
-        queryUrl += '&';
-      }
-      else {
-        queryUrl += '?';
-      }
+      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);     
       queryUrl += 'state=';
       queryUrl += queryCriteria.state.replace(/ /g , "%20");
+      addedQueryParam = true;
     }
     if( queryCriteria.zipCode ) {
-      if( addedQueryParam ) {
-        queryUrl += '&';
-      }
-      else {
-        queryUrl += '?';
-      }
+      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);     
       queryUrl += 'zip=';
       queryUrl += queryCriteria.zipCode.replace(/ /g , "%20");
+      addedQueryParam = true;
+    }
+    if( queryCriteria.inStateMinTuition && queryCriteria.inStateMaxTuition ) {
+      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);
+      queryUrl += 'inStateCostRange=';
+      queryUrl += this.multiplier(queryCriteria.inStateMinTuition, 1000) + '..' + this.multiplier(queryCriteria.inStateMaxTuition, 1000);
+      addedQueryParam = true;
+    }
+    if( queryCriteria.outStateMinTuition && queryCriteria.outStateMaxTuition ) {
+      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);
+      queryUrl += 'outStateCostRange=';
+      queryUrl += this.multiplier(queryCriteria.outStateMinTuition, 1000) + '..' + this.multiplier(queryCriteria.outStateMaxTuition, 1000);
+      addedQueryParam = true;
     }
     if( queryCriteria.sortField && queryCriteria.sortOrder ) {
-      if( addedQueryParam ) {
-        queryUrl += '&';
-      }
-      else {
-        queryUrl += '?';
-      }
+      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);   
       queryUrl += 'sort=';
       queryUrl += queryCriteria.sortField + ":" + queryCriteria.sortOrder;
+      addedQueryParam = true;
     }
-    if( addedQueryParam ) {
-      queryUrl += '&';
-    }
-    else {
-      queryUrl += '?';
-    }
-    queryUrl += 'page=0&size=100';     
+    queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);     
+    queryUrl += 'page=0&size=100';
+
     return this.http.get(queryUrl, {headers: this.headers}) // The Angular http.get returns an RxJS Observable. Observables are a powerful way to manage asynchronous data flows. You'll read about Observables later in this page.
             .toPromise() // Convert the Observable to a Promise using the toPromise operator. The Angular Observable doesn't have toPromise() out of box, to get this functionality you have to import it as done above.
             .then(response => response.json() as UniversityData[]) // Extract data from response by calling json(). The JSON we created has a top level data property that contains the Hero array.
@@ -89,5 +81,19 @@ export class HttpUniversityService {
   private handleError(error: any): Promise<any> {
     console.error('Http error occurred', error);
     return Promise.reject(error.message || error);
-  }  
+  }
+
+  private multiplier( input: number, multiplyBy: number ) {
+    return input * multiplyBy;
+  }
+
+  private appendQueryDelimiter(queryUrl: string, addedQueryParam: boolean) : string {
+    if( addedQueryParam ) {
+      queryUrl += '&';
+    }
+    else {
+      queryUrl += '?';
+    }
+    return queryUrl;
+  }
 }

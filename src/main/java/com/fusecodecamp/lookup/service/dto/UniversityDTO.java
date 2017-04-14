@@ -15,6 +15,36 @@ public class UniversityDTO {
 
     private String zipCode;
 
+    private String accreditor;
+
+    private String schoolUrl;
+
+    private String priceCalculatorUrl;
+
+    private String mainCampus;
+
+    private int branches;
+
+    private String degreesAwardedPredominant;
+
+    private String degreesAwardedHighest;
+
+    private String ownership;
+
+    private String regionId;
+
+    private String locale;
+
+    private String carnegieBasic;
+
+    private String religiousAffiliation;
+
+    private String admissionRateOverall;
+
+    private String inStateTuitionCost;
+
+    private String outStateTuitionCost;
+
     public Long getId() {
         return id;
     }
@@ -53,5 +83,125 @@ public class UniversityDTO {
 
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
+    }
+
+    public String getAccreditor() {
+        return accreditor;
+    }
+
+    public void setAccreditor(String accreditor) {
+        this.accreditor = accreditor;
+    }
+
+    public String getSchoolUrl() {
+        return schoolUrl;
+    }
+
+    public void setSchoolUrl(String schoolUrl) {
+        this.schoolUrl = schoolUrl;
+    }
+
+    public String getPriceCalculatorUrl() {
+        return priceCalculatorUrl;
+    }
+
+    public void setPriceCalculatorUrl(String priceCalculatorUrl) {
+        this.priceCalculatorUrl = priceCalculatorUrl;
+    }
+
+    public String getMainCampus() {
+        return mainCampus;
+    }
+
+    public void setMainCampus(String mainCampus) {
+        this.mainCampus = mainCampus;
+    }
+
+    public int getBranches() {
+        return branches;
+    }
+
+    public void setBranches(int branches) {
+        this.branches = branches;
+    }
+
+    public String getDegreesAwardedPredominant() {
+        return degreesAwardedPredominant;
+    }
+
+    public void setDegreesAwardedPredominant(String degreesAwardedPredominant) {
+        this.degreesAwardedPredominant = degreesAwardedPredominant;
+    }
+
+    public String getDegreesAwardedHighest() {
+        return degreesAwardedHighest;
+    }
+
+    public void setDegreesAwardedHighest(String degreesAwardedHighest) {
+        this.degreesAwardedHighest = degreesAwardedHighest;
+    }
+
+    public String getOwnership() {
+        return ownership;
+    }
+
+    public void setOwnership(String ownership) {
+        this.ownership = ownership;
+    }
+
+    public String getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(String regionId) {
+        this.regionId = regionId;
+    }
+
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
+    public String getCarnegieBasic() {
+        return carnegieBasic;
+    }
+
+    public void setCarnegieBasic(String carnegieBasic) {
+        this.carnegieBasic = carnegieBasic;
+    }
+
+    public String getReligiousAffiliation() {
+        return religiousAffiliation;
+    }
+
+    public void setReligiousAffiliation(String religiousAffiliation) {
+        this.religiousAffiliation = religiousAffiliation;
+    }
+
+    public String getAdmissionRateOverall() {
+        return admissionRateOverall;
+    }
+
+    public void setAdmissionRateOverall(String admissionRateOverall) {
+        this.admissionRateOverall = admissionRateOverall;
+    }
+
+    public String getInStateTuitionCost() {
+        return inStateTuitionCost;
+    }
+
+    public void setInStateTuitionCost(String inStateTuitionCost) {
+        this.inStateTuitionCost = inStateTuitionCost;
+    }
+
+    public String getOutStateTuitionCost() {
+        return outStateTuitionCost;
+    }
+
+    public void setOutStateTuitionCost(String outStateTuitionCost) {
+        this.outStateTuitionCost = outStateTuitionCost;
     }
 }

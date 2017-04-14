@@ -24,6 +24,12 @@ export class SearchWizardPage {
   state: string;
   zipCode: string;
 
+  inStateMinTuition: number;
+  inStateMaxTuition: number;
+
+  outStateMinTuition: number;
+  outStateMaxTuition: number;
+
   sortField: string;
   sortOrder: string;
 
@@ -48,6 +54,10 @@ export class SearchWizardPage {
     queryCriteria.city = this.city;
     queryCriteria.state = this.state;
     queryCriteria.zipCode = this.zipCode;
+    queryCriteria.inStateMinTuition = this.inStateMinTuition;
+    queryCriteria.inStateMaxTuition = this.inStateMaxTuition;
+    queryCriteria.outStateMinTuition = this.outStateMinTuition;
+    queryCriteria.outStateMaxTuition = this.outStateMaxTuition;
     queryCriteria.sortField = this.sortField;
     queryCriteria.sortOrder = this.sortOrder;
 
