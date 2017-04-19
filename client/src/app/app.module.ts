@@ -10,8 +10,11 @@ import { SearchHomePage } from '../pages/search-home/search-home';
 import { SearchNavController } from '../pages/search-nav-controller/search-nav-controller';
 import { SearchWizardPage } from '../pages/search-wizard-page/search-wizard-page';
 import { SearchWizardResultPage } from '../pages/search-wizard-result-page/search-wizard-result-page';
+import { DetailsPage } from '../pages/details-page/details-page';
+import { UnivWebsitePage } from '../pages/univ-website-page/univ-website-page';
 
 import { HttpUniversityService } from '../providers/http-university-service';
+import { SafePipe } from './safe.pipe';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,7 +26,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SearchHomePage,
     SearchWizardPage,
     SearchWizardResultPage,
-    ListPage
+    ListPage,
+    DetailsPage,
+    UnivWebsitePage,
+    SafePipe
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SearchHomePage,
     SearchWizardPage,
     SearchWizardResultPage,
-    ListPage
+    ListPage,
+    DetailsPage,
+    UnivWebsitePage
   ],
   providers: [
     StatusBar,

@@ -8,4 +8,6 @@ export class UniversityData {
   public state: string;
   public zipCode: string;
   public address: string;
+  public schoolUrl: string;
+  public accreditor: string;
 }

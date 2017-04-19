@@ -78,6 +78,17 @@ export class HttpUniversityService {
             .catch(this.handleError); // Catch errors and pass to handler.
   }
 
+  getUniversityById(id: Number) : Promise<UniversityData> {
+    var queryUrl = this.universityUrl;
+    queryUrl += "/";
+    queryUrl += id;
+
+    return this.http.get(queryUrl, {headers: this.headers})
+      .toPromise()
+      .then(response => response.json() as UniversityData)
+      .catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('Http error occurred', error);
     return Promise.reject(error.message || error);

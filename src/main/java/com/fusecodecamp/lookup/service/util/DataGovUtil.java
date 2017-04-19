@@ -6,11 +6,23 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by stephan.haller on 4/6/17.
  */
 public class DataGovUtil {
+
+    static {
+        ArrayList<String> staticFieldList = new ArrayList<>();
+        staticFieldList.add("id");
+        staticFieldList.add("school.name");
+        staticFieldList.add("school.city");
+        staticFieldList.add("school.state");
+        staticFieldList.add("school.zip");
+
+        universityDataSetFieldList = staticFieldList;
+    }
 
     static {
         ArrayList<String> staticFieldList = new ArrayList<>();
@@ -35,10 +47,12 @@ public class DataGovUtil {
         staticFieldList.add("2014.cost.tuition.in_state");
         staticFieldList.add("2014.cost.tuition.out_of_state");
 
-        dataSetFieldList = staticFieldList;
+        universityDetailsFieldList = staticFieldList;
     }
 
-    private static final ArrayList<String> dataSetFieldList;
+    public static final ArrayList<String> universityDataSetFieldList;
+
+    public static final ArrayList<String> universityDetailsFieldList;
 
     public static boolean isStringNullOrEmpty(String str) {
 
@@ -48,7 +62,14 @@ public class DataGovUtil {
         return false;
     }
 
-    public static String processDataGovUrl( String url, String name, String city, String state, String zip, String inStateCostRange, String outStateCostRange, Pageable pageable, String sort ) {
+    public static boolean isListNullOrEmpty(List<?> list) {
+        if( null == list || list.isEmpty() ) {
+            return true;
+        }
+        return false;
+    }
+
+    public static String generateDataGovUrlWithQueryParameters(String url, String name, String city, String state, String zip, String inStateCostRange, String outStateCostRange, Pageable pageable, String sort ) {
 
         boolean queryParamAppended = false;
         StringBuffer processedUrl = new StringBuffer(url + "?");
@@ -102,33 +123,25 @@ public class DataGovUtil {
         if(queryParamAppended) {
             processedUrl.append("&");
         }
-        processedUrl.append(generateDataSetFieldList());
+        processedUrl.append(generateDataGovFieldList(universityDataSetFieldList));
         queryParamAppended = true;
 
         return appendPageableAndSortParams(pageable, sort, queryParamAppended, processedUrl);
     }
 
-    private static String appendPageableAndSortParams(Pageable pageable, String sort, boolean queryParamAppended, StringBuffer processedUrl) {
+    public static String generateDataGovUrlSearchingById( String url, long id ) {
 
-        if(queryParamAppended) {
-            processedUrl.append("&");
-        }
-        processedUrl.append("page=");
-        processedUrl.append(pageable.getPageNumber());
+        StringBuffer processedUrl = new StringBuffer(url + "?");
+        processedUrl.append("id=");
+        processedUrl.append(id);
         processedUrl.append("&");
-        processedUrl.append("per_page=");
-        processedUrl.append(pageable.getPageSize());
-        if(!isStringNullOrEmpty(sort)) {
-            processedUrl.append("&");
-            processedUrl.append("_sort=");
-            processedUrl.append(sort);
-        }
+
+        processedUrl.append(generateDataGovFieldList(universityDetailsFieldList));
 
         return processedUrl.toString();
     }
 
-    public static HttpHeaders generatePaginationHttpHeaders(int total, int page, int perPage, String baseUrl)
-        throws URISyntaxException {
+    public static HttpHeaders generatePaginationHttpHeaders(int total, int page, int perPage, String baseUrl) throws URISyntaxException {
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("X-Total-Count", "" + Integer.toString(total));
@@ -151,16 +164,35 @@ public class DataGovUtil {
         return headers;
     }
 
+    private static String appendPageableAndSortParams(Pageable pageable, String sort, boolean queryParamAppended, StringBuffer processedUrl) {
+
+        if(queryParamAppended) {
+            processedUrl.append("&");
+        }
+        processedUrl.append("page=");
+        processedUrl.append(pageable.getPageNumber());
+        processedUrl.append("&");
+        processedUrl.append("per_page=");
+        processedUrl.append(pageable.getPageSize());
+        if(!isStringNullOrEmpty(sort)) {
+            processedUrl.append("&");
+            processedUrl.append("_sort=");
+            processedUrl.append(sort);
+        }
+
+        return processedUrl.toString();
+    }
+
     private static String generateUri(String baseUrl, int page, int size) throws URISyntaxException {
         return UriComponentsBuilder.fromUriString(baseUrl).queryParam("page", page).queryParam("size", size).toUriString();
     }
 
-    private static String generateDataSetFieldList() {
+    private static String generateDataGovFieldList(final ArrayList<String> arrayList) {
         StringBuilder stringBuilder = new StringBuilder("_fields=");
-        for( int i = 0; i < dataSetFieldList.size(); i++) {
-            String dataSetField = dataSetFieldList.get(i);
+        for(int i = 0; i < arrayList.size(); i++) {
+            String dataSetField = arrayList.get(i);
             stringBuilder.append(dataSetField);
-            if( i < dataSetFieldList.size() - 1) {
+            if( i < arrayList.size() - 1) {
                 stringBuilder.append(",");
             }
         }

@@ -37,17 +37,27 @@ public class UniversityLookupResource {
     @Timed
     @CrossOrigin(origins = "*")
     @GetMapping("/universities")
-    public ResponseEntity<List<UniversityDTO>> getAllBySearchCriteria(@RequestParam(value = "name", required = false) String name,
-                                                                      @RequestParam(value = "city", required = false) String city,
-                                                                      @RequestParam(value = "state", required = false) String state,
-                                                                      @RequestParam(value = "zip", required = false) String zip,
-                                                                      @RequestParam(value = "inStateCostRange", required = false) String inStateCostRange,
-                                                                      @RequestParam(value = "outStateCostRange", required = false) String outStateCostRange,
-                                                                      @RequestParam(value = "sort", required = false) String sort,
-                                                                      @ApiParam Pageable pageable) throws URISyntaxException, IOException {
+    public ResponseEntity<List<UniversityDTO>> getUniversitiesBySearchCriteria(@RequestParam(value = "name", required = false) String name,
+                                                                               @RequestParam(value = "city", required = false) String city,
+                                                                               @RequestParam(value = "state", required = false) String state,
+                                                                               @RequestParam(value = "zip", required = false) String zip,
+                                                                               @RequestParam(value = "inStateCostRange", required = false) String inStateCostRange,
+                                                                               @RequestParam(value = "outStateCostRange", required = false) String outStateCostRange,
+                                                                               @RequestParam(value = "sort", required = false) String sort,
+                                                                               @ApiParam Pageable pageable) throws URISyntaxException, IOException {
 
-        final GovDataResponseDTO dataGovResponse = universityLookupService.getAllBySearchCriteria(name, city, state, zip, inStateCostRange, outStateCostRange, pageable, sort);
+        final GovDataResponseDTO dataGovResponse = universityLookupService.getUniversitiesBySearchCriteria(name, city, state, zip, inStateCostRange, outStateCostRange, pageable, sort);
         HttpHeaders headers = DataGovUtil.generatePaginationHttpHeaders(dataGovResponse.getTotal(), dataGovResponse.getPage(), dataGovResponse.getPerPage(), "/api/universities");
         return new ResponseEntity<>(dataGovResponse.getUniversityDTOList(), headers, HttpStatus.OK);
+    }
+
+    @Timed
+    @CrossOrigin(origins = "*")
+    @GetMapping("/universities/{id}")
+    public ResponseEntity<UniversityDTO> getUniversityById(@PathVariable(value = "id") long id) throws URISyntaxException, IOException {
+
+        final GovDataResponseDTO dataGovResponse = universityLookupService.getUniversityById(id);
+        HttpHeaders headers = DataGovUtil.generatePaginationHttpHeaders(dataGovResponse.getTotal(), dataGovResponse.getPage(), dataGovResponse.getPerPage(), "/api/universities");
+        return new ResponseEntity<>(DataGovUtil.isListNullOrEmpty(dataGovResponse.getUniversityDTOList())? null : dataGovResponse.getUniversityDTOList().get(0), headers, HttpStatus.OK);
     }
 }

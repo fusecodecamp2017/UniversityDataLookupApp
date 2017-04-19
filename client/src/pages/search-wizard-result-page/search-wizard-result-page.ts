@@ -4,6 +4,7 @@ import { QueryCriteria } from '../../providers/dto/query-criteria';
 import { UniversityData } from '../../providers/dto/university-data';
 import { HttpUniversityService } from '../../providers/http-university-service';
 import { LoadingController, Loading } from 'ionic-angular';
+import { DetailsPage } from '../details-page/details-page';
 
 /**
  * Generated class for the SearchWizardResultPage page.
@@ -61,7 +62,8 @@ export class SearchWizardResultPage {
       });
   }
 
-  universitySelected(university) {
-    console.log('universitySelected');
+  universitySelected(university: UniversityData) {
+    console.log('universitySelected - id: ' + university.id);
+    this.navCtrl.push(DetailsPage, {'id': university.id});
   }
 }
