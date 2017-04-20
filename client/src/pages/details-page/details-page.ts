@@ -43,8 +43,12 @@ export class DetailsPage {
       });
   }
 
+  onGoBack() {
+    this.navCtrl.pop();
+  }  
+
   onUnivWebSite(event) {
-    this.navCtrl.push(UnivWebsitePage, {url: this.universityData.schoolUrl});
+    this.navCtrl.push(UnivWebsitePage, {name: this.universityData.name, url: this.universityData.schoolUrl});
   }
 
   onUnivPaymentCalculatorWebSite(event) {

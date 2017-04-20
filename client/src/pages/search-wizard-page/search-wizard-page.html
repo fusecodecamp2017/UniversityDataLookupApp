@@ -8,10 +8,8 @@
   <ion-slides pager="true" paginationType="bullets" effect="slide"> <!-- Add dots at bottom of slides //-->
     <ion-slide>
       <ion-toolbar>
-        <ion-buttons end class="toolbar-background">
-          <button ion-button color="primary" (click)="onNextSlide()" class="skip-btn">Skip</button>
-        </ion-buttons>
-        <ion-title>College and Location</ion-title>
+        <i class="fa fa-chevron-left chevron-style-override" aria-hidden="true" (click)="onGoBack()"></i>  
+        <ion-title style="text-align: left; margin-left: 3vw;">College and Location</ion-title>
       </ion-toolbar>
       <!-- <h2 class="slide-title">College and Location</h2> //-->
       <ion-grid>
@@ -118,10 +116,8 @@
 
     <ion-slide>
       <ion-toolbar>
-        <ion-title class="toolbar-title-center">Tuition</ion-title>
-        <ion-buttons left>
-          <button ion-button color="primary" (click)="onPrevSlide()">Back</button>
-        </ion-buttons>        
+        <i class="fa fa-chevron-left chevron-style-override" aria-hidden="true" (click)="onPrevSlide()"></i>
+        <ion-title style="text-align: left; margin-left: 3vw;">Tuition</ion-title>
       </ion-toolbar>
       <!-- <h2 class="slide-title">Tuition</h2> //-->
       <ion-grid>
@@ -177,10 +173,8 @@
     </ion-slide>
     <ion-slide>
       <ion-toolbar>
-        <ion-title>Sorting</ion-title>
-        <ion-buttons left>
-          <button ion-button color="primary" (click)="onPrevSlide()">Back</button>
-        </ion-buttons>        
+        <i class="fa fa-chevron-left chevron-style-override" aria-hidden="true" (click)="onPrevSlide()"></i>
+        <ion-title style="text-align: left; margin-left: 3vw;">Sorting</ion-title>
       </ion-toolbar>
       <!-- <h2 class="slide-title">Sorting</h2> //-->
       <ion-grid>

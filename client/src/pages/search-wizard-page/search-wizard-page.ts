@@ -48,6 +48,10 @@ export class SearchWizardPage {
     this.slides.slidePrev(500);
   }
 
+  onGoBack() {
+    this.navCtrl.pop(); // Go from SearchWizardPage back to SearhHomPage.
+  }
+
   onGetUniversityData() {
     let queryCriteria = new QueryCriteria();
     queryCriteria.name = this.name;

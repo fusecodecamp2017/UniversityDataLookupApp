@@ -62,6 +62,10 @@ export class SearchWizardResultPage {
       });
   }
 
+  onGoBack() {
+    this.navCtrl.pop();
+  }
+
   universitySelected(university: UniversityData) {
     console.log('universitySelected - id: ' + university.id);
     this.navCtrl.push(DetailsPage, {'id': university.id});

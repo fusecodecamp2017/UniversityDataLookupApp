@@ -3,6 +3,10 @@
     background: lightblue;
     border-color: transparent;
   }
+  .title-override {
+    text-align: center;
+    margin-left: -3vw;    
+  }  
   .slide-zoom {
     height: 100%;
   }
@@ -12,9 +16,6 @@
   .skip-btn {
     padding-right: 5%;
     padding-top: 2%;
-  }
-  .toolbar-title-center {
-    margin-right: 15%;
   }
   .or-divider {
     text-align: center;
@@ -36,6 +37,11 @@
   }
   .ion-list {
     padding-top: 5%;
+  }
+  .chevron-style-override {
+    float: left;
+    padding-left: 3vw;
+    font-size: 4vh;    
   }
 }
 

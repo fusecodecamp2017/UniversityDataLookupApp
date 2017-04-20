@@ -24,4 +24,7 @@ export class SearchNavController {
     console.log('ionViewDidLoad SearchNavController');
   }
 
+  goBack() {
+    this.navCtrl.pop();
+  }
 }

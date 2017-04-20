@@ -13,14 +13,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UnivWebsitePage {
 
+  private name: string;
   private webSiteUrl: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.name = navParams.get('name');
     this.webSiteUrl = navParams.get('url');
     this.webSiteUrl = 'http://' + this.webSiteUrl;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UnivWebsitePage');
+  }
+
+  onGoBack() {
+    this.navCtrl.pop();
   }
 }

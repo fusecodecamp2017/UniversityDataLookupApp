@@ -6,11 +6,15 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>search-wizard-result-page</ion-title>
+    <ion-title>search-wizard-result-page</ion-title>   
   </ion-navbar>
 </ion-header>
 
 <ion-content padding class="search-wizard-result-page">
+  <ion-toolbar>
+    <i class="fa fa-chevron-left chevron-style-override" aria-hidden="true" (click)="onGoBack()"></i>  
+    <ion-title style="text-align: left; margin-left: 3vw;">Colleges</ion-title>
+  </ion-toolbar>  
   <ion-list>
     <ion-item *ngFor="let university of universityData" (click)="universitySelected(university)">
       <ion-thumbnail item-left class="thumbnail">
