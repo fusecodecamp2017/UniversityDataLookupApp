@@ -15,5 +15,5 @@
     <i class="fa fa-chevron-left chevron-style-override" aria-hidden="true" (click)="onGoBack()"></i>  
     <ion-title style="text-align: left; margin-left: 3vw;">{{ name }}</ion-title>
   </ion-toolbar>  
-  <iframe [src]="webSiteUrl | safe" class="container"></iframe>
+  <iframe id="iframeId" [src]="webSiteUrl | safe" class="container" frameborder="0" (load)="resizeIframe()" style="overflow-x: hidden;"></iframe>
 </ion-content>

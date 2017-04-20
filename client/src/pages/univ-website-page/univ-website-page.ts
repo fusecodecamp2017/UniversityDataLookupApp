@@ -26,6 +26,11 @@ export class UnivWebsitePage {
     console.log('ionViewDidLoad UnivWebsitePage');
   }
 
+  resizeIframe() {
+    // var iframe = document.getElementById('iframeId');
+    // iframe.style.height = (<HTMLIFrameElement>iframe).contentWindow.document.body.scrollHeight + 'px';
+  }
+
   onGoBack() {
     this.navCtrl.pop();
   }

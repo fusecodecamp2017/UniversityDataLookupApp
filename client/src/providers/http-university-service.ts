@@ -16,7 +16,7 @@ import { JsonConvert } from "json2typescript"
 export class HttpUniversityService {
 
   private headers: Headers;
-  private universityUrl = 'http://localhost:8081/api/universities';
+  private universityUrl = 'https://college-app.cfapps.io/api/universities';
 
   constructor(public http: Http) {
     this.headers = new Headers();
