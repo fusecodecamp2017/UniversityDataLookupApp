@@ -15,12 +15,36 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <a href="#" (click)="onUnivWebSite()">{{ universityData.name }}</a>
+        <div class="label">Name:</div>
+        <div class="data">{{ universityData.name }}</div>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <div>{{ universityData.address }}</div>
+        <div class="label">Address:</div>
+        <div class="data">{{ universityData.address }}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="left-container">
+          <div class="label">School Url:</div>
+          <a href="#" class="data url-container" (click)="onUnivWebSite($event)">{{ universityData.schoolUrl }}</a>
+        </div>
+        <div class="right-container" (click)="onUnivWebSite($event)">
+          <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="left-container">
+          <div class="label">Price Calculator Url:</div>
+          <a href="#" class="data url-container" (click)="onUnivPaymentCalculatorWebSite($event)">{{ universityData.priceCalculatorUrl }}</a>
+        </div>
+        <div class="right-container" (click)="onUnivPaymentCalculatorWebSite($event)">
+          <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+        </div>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -28,6 +52,60 @@
         <div class="label">Accreditor:</div>
         <div class="data">{{ universityData.accreditor }}</div>
       </ion-col>
-    </ion-row>       
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="label">Main Campus:</div>
+        <div class="data">{{ universityData.mainCampus }}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <span class="label" style="vertical-align: top; line-height: 3vh;">Number of branches:</span>
+        <span class="data">{{ universityData.branches }}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="label">Predominant Degrees Awarded:</div>
+        <div class="data">{{ universityData.degreesAwardedPredominant }}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="label">Highest Degrees Awarded:</div>
+        <div class="data">{{ universityData.degreesAwardedHighest }}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="label">Ownership:</div>
+        <div class="data">{{ universityData.ownership }}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="label">Locale:</div>
+        <div class="data">{{ universityData.locale }}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="label">Overall Admission Rate:</div>
+        <div class="data">{{ universityData.admissionRateOverall }}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="label">In-State Tuition Cost:</div>
+        <div class="data">{{ universityData.inStateTuitionCost | currency:'USD':true:'.2-2' }}</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="label">Out of State Tuition Cost:</div>
+        <div class="data">{{ universityData.outStateTuitionCost | currency:'USD':true:'.2-2' }}</div>
+      </ion-col>
+    </ion-row>                              
   </ion-grid>
 </ion-content>

@@ -43,7 +43,11 @@ export class DetailsPage {
       });
   }
 
-  onUnivWebSite() {
+  onUnivWebSite(event) {
     this.navCtrl.push(UnivWebsitePage, {url: this.universityData.schoolUrl});
   }
+
+  onUnivPaymentCalculatorWebSite(event) {
+    this.navCtrl.push(UnivWebsitePage, {url: this.universityData.priceCalculatorUrl});
+  }  
 }

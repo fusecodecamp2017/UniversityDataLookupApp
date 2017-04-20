@@ -1,10 +1,49 @@
 .page-details-page {
   line-height: 2.5vh;
   font-size: 2vh;
+  .ion-item-override {
+    padding-left: 0px;
+  }
+  .ion-label-override {
+    margin-bottom: -3px;
+    padding-bottom: 0px;    
+  }
+  .ion-input-override {
+    color: blue; 
+    text-decoration: underline;
+  }
   .label {
-    font-weight: bold;
+    font-size: 2.0vh;
+    line-height: 2.2vh;
+    color: blue;
+    text-align: left;
+    padding-top: 8px;
+    padding-bottom: 3px;
   }
   .data {
-    font-weight: normal;
+    font-size: 2.5vh;
+    line-height: 3.0vh;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre-wrap;    
+  }
+  .left-container {
+    display: inline-block;
+    width: 85%;
+  }
+  .url-container {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre-line;
+    max-width: 85%;  
+  }
+  .right-container {
+    display: inline-block;
+    width: 10%;
+    line-height: 4vh;
+    font-size: 4vh;
+    width: 10%;
+    text-align: right;
   }
 }
