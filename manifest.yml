@@ -1,0 +1,9 @@
+---
+applications:
+- name: university-app
+  memory: 2048M
+  instances: 1
+  buildpack: java_buildpack
+  random-route: false
+  host: college-app
+  path: build/libs/university-data-lookup-app-0.0.1-SNAPSHOT.war
