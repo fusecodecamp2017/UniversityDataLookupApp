@@ -4,6 +4,7 @@ import { UniversityData } from '../../providers/dto/university-data';
 import { HttpUniversityService } from '../../providers/http-university-service';
 import { LoadingController, Loading } from 'ionic-angular';
 import { UnivWebsitePage } from '../univ-website-page/univ-website-page';
+import { WindowRef } from '../../providers/window-ref';
 
 @Component({
   selector: 'page-details-page',
@@ -15,7 +16,11 @@ export class DetailsPage {
   private universityData: UniversityData;
   private loading: Loading;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private httpUniversityService: HttpUniversityService, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              private httpUniversityService: HttpUniversityService, 
+              private loadingCtrl: LoadingController,
+              private windowRef: WindowRef) {
     console.log('DetailsPage id: ' + navParams.get('id'));
     this.universityData = new UniversityData();
     this.universityData.id = navParams.get('id');
@@ -48,7 +53,8 @@ export class DetailsPage {
   }  
 
   onUnivWebSite(event) {
-    this.navCtrl.push(UnivWebsitePage, {name: this.universityData.name, url: this.universityData.schoolUrl});
+    // this.navCtrl.push(UnivWebsitePage, {name: this.universityData.name, url: this.universityData.schoolUrl});
+    this.windowRef.nativeWindow.open('http://' + this.universityData.schoolUrl, '_blank');
   }
 
   onUnivPaymentCalculatorWebSite(event) {

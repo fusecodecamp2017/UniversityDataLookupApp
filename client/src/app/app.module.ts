@@ -14,13 +14,14 @@ import { DetailsPage } from '../pages/details-page/details-page';
 import { UnivWebsitePage } from '../pages/univ-website-page/univ-website-page';
 
 import { HttpUniversityService } from '../providers/http-university-service';
+import { WindowRef } from '../providers/window-ref';
 import { SafePipe } from './safe.pipe';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 @NgModule({
-  declarations: [
+  declarations: [ // Tells which components belong to the AppModule.
     MyApp,
     SearchNavController,
     SearchHomePage,
@@ -31,13 +32,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     UnivWebsitePage,
     SafePipe
   ],
-  imports: [
+  imports: [ // Tells Angular which modules (libraries) this app uses.
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     HttpModule
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [IonicApp], // IonicApp should be started first, with it's component tree created.
   entryComponents: [
     MyApp,
     SearchNavController,
@@ -48,10 +49,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DetailsPage,
     UnivWebsitePage
   ],
-  providers: [
+  providers: [ // Make services globally available to the app.
     StatusBar,
     SplashScreen,
     HttpUniversityService, // Make HttpService globally available.
+    WindowRef,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

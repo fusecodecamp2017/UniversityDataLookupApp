@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LoadingController, Loading } from 'ionic-angular';
-import { ViewChild, ElementRef, AfterViewInit } from '@angular/core'
+import { ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { WindowRef } from '../../providers/window-ref';
 
 declare var jQuery: any;
 
@@ -21,15 +22,19 @@ export class UnivWebsitePage implements AfterViewInit {
   private webSiteUrl: string;
   private loading: Loading;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              private loadingCtrl: LoadingController,
+              private windowRef: WindowRef) {
     this.name = navParams.get('name');
     this.webSiteUrl = navParams.get('url');
     this.webSiteUrl = 'http://' + this.webSiteUrl;
   }
 
   ionViewDidLoad() {
-    var test = jQuery('#iframe-container');
-    test[0].innerHTML = '<iframe id="iframeId" src="' + this.webSiteUrl + '" class="container" frameborder="0" style="overflow-x: hidden; ' + 'height: ' + test[0].parentElement.clientHeight + 'px;"></iframe>';
+    // var test = jQuery('#iframe-container');
+    // test[0].innerHTML = '<iframe id="iframeId" src="' + this.webSiteUrl + '" class="container" frameborder="0" style="overflow-x: hidden; ' + 'height: ' + test[0].parentElement.clientHeight + 'px;"></iframe>';
+    
     // this.loading = this.loadingCtrl.create({
     //   content: 'Loading College...',
     //   dismissOnPageChange: false
