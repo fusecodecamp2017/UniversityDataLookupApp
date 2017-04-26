@@ -53,8 +53,8 @@ export class DetailsPage {
   }  
 
   onUnivWebSite(event) {
-    // this.navCtrl.push(UnivWebsitePage, {name: this.universityData.name, url: this.universityData.schoolUrl});
-    this.windowRef.nativeWindow.open('http://' + this.universityData.schoolUrl, '_blank');
+    this.navCtrl.push(UnivWebsitePage, {name: this.universityData.name, url: this.universityData.schoolUrl});
+    // this.windowRef.nativeWindow.open('http://' + this.universityData.schoolUrl, '_blank');
   }
 
   onUnivPaymentCalculatorWebSite(event) {

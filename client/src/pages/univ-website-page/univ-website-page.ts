@@ -32,8 +32,8 @@ export class UnivWebsitePage implements AfterViewInit {
   }
 
   ionViewDidLoad() {
-    // var test = jQuery('#iframe-container');
-    // test[0].innerHTML = '<iframe id="iframeId" src="' + this.webSiteUrl + '" class="container" frameborder="0" style="overflow-x: hidden; ' + 'height: ' + test[0].parentElement.clientHeight + 'px;"></iframe>';
+    var test = jQuery('#iframe-container');
+    test[0].innerHTML = '<iframe id="iframeId" src="' + this.webSiteUrl + '" class="container" frameborder="0" style="overflow-x: hidden; ' + 'height: ' + test[0].parentElement.clientHeight + 'px;"></iframe>';
     
     // this.loading = this.loadingCtrl.create({
     //   content: 'Loading College...',
