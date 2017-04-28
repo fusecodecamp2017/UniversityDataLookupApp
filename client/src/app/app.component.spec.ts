@@ -12,7 +12,7 @@ describe('MyApp Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MyApp, SearchNavController],
+      declarations: [MyApp],
       imports: [
         IonicModule.forRoot(MyApp)
       ],

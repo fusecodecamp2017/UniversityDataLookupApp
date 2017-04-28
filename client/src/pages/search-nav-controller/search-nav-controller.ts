@@ -17,7 +17,7 @@ export class SearchNavController {
 
   rootSearchWizardPage: any = SearchHomePage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController) {
   }
 
   ionViewDidLoad() {
