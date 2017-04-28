@@ -47,6 +47,14 @@ export class ConfigMock {
   }
 }
 
+export class SlidesMock {
+
+}
+
+export class QueryCriteriaMock {
+
+}
+
 export class FormMock {
   public register(): any {
     return true;

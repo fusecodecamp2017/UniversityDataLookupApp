@@ -33,7 +33,7 @@ export class SearchWizardPage {
   sortField: string;
   sortOrder: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {    
+  constructor(public navCtrl: NavController, public queryCriteria: QueryCriteria) {    
   }
 
   ionViewDidLoad() {
@@ -53,18 +53,17 @@ export class SearchWizardPage {
   }
 
   onGetUniversityData() {
-    let queryCriteria = new QueryCriteria();
-    queryCriteria.name = this.name;
-    queryCriteria.city = this.city;
-    queryCriteria.state = this.state;
-    queryCriteria.zipCode = this.zipCode;
-    queryCriteria.inStateMinTuition = this.inStateMinTuition;
-    queryCriteria.inStateMaxTuition = this.inStateMaxTuition;
-    queryCriteria.outStateMinTuition = this.outStateMinTuition;
-    queryCriteria.outStateMaxTuition = this.outStateMaxTuition;
-    queryCriteria.sortField = this.sortField;
-    queryCriteria.sortOrder = this.sortOrder;
+    this.queryCriteria.name = this.name;
+    this.queryCriteria.city = this.city;
+    this.queryCriteria.state = this.state;
+    this.queryCriteria.zipCode = this.zipCode;
+    this.queryCriteria.inStateMinTuition = this.inStateMinTuition;
+    this.queryCriteria.inStateMaxTuition = this.inStateMaxTuition;
+    this.queryCriteria.outStateMinTuition = this.outStateMinTuition;
+    this.queryCriteria.outStateMaxTuition = this.outStateMaxTuition;
+    this.queryCriteria.sortField = this.sortField;
+    this.queryCriteria.sortOrder = this.sortOrder;
 
-    this.navCtrl.push(SearchWizardResultPage, queryCriteria);
-  } 
+    this.navCtrl.push(SearchWizardResultPage, this.queryCriteria);
+  }
 }

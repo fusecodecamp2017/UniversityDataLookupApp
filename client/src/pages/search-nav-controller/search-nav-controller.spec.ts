@@ -50,10 +50,6 @@ describe('SearchNavController Component', () => {
 
     it('initialises with a root page of SearchHomePage', () => {
         expect(component['rootSearchWizardPage']).toBe(SearchHomePage);
-
-        spyOn(component['navCtrl'], "pop");
-        component.goBack();
-        expect(component['navCtrl'].pop).toHaveBeenCalled();
     });
 
     it('calls NavController.pop() when the goBack method is called', () => {
