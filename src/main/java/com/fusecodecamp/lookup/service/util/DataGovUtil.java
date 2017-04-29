@@ -69,7 +69,7 @@ public class DataGovUtil {
         return false;
     }
 
-    public static String generateDataGovUrlWithQueryParameters(String url, String name, String city, String state, String zip, String inStateCostRange, String outStateCostRange, Pageable pageable, String sort ) {
+    public static String generateDataGovUrlWithQueryParameters(String url, String name, String city, String state, String zip, String inStateCostRange, String outStateCostRange, String distance, Pageable pageable, String sort ) {
 
         boolean queryParamAppended = false;
         StringBuffer processedUrl = new StringBuffer(url + "?");
@@ -95,7 +95,19 @@ public class DataGovUtil {
             processedUrl.append(state);
             queryParamAppended = true;
         }
-        if(!isStringNullOrEmpty(zip)) {
+        if( !isStringNullOrEmpty(distance) && !isStringNullOrEmpty(zip) ) {
+            if(queryParamAppended) {
+                processedUrl.append("&");
+            }
+            processedUrl.append("_zip=");
+            processedUrl.append(zip);
+            processedUrl.append("&");
+            processedUrl.append("_distance=");
+            processedUrl.append(distance);
+            queryParamAppended = true;
+
+        }
+        else if(!isStringNullOrEmpty(zip)) {
             if(queryParamAppended) {
                 processedUrl.append("&");
             }
@@ -103,6 +115,7 @@ public class DataGovUtil {
             processedUrl.append(zip);
             queryParamAppended = true;
         }
+
         if(!isStringNullOrEmpty(inStateCostRange)) {
             if(queryParamAppended) {
                 processedUrl.append("&");

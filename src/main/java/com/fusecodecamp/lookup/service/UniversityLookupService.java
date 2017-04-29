@@ -100,11 +100,11 @@ public class UniversityLookupService {
     @Autowired
     private UserService userService;
 
-    public GovDataResponseDTO getUniversitiesBySearchCriteria(String name, String city, String state, String zip, String inStateCostRange, String outStateCostRange, Pageable pageable, String sort) throws IOException {
+    public GovDataResponseDTO getUniversitiesBySearchCriteria(String name, String city, String state, String zip, String inStateCostRange, String outStateCostRange, String distance, Pageable pageable, String sort) throws IOException {
 
         CloseableHttpClient httpclient = HttpClients.createDefault();
 
-        String dataGovUrl = DataGovUtil.generateDataGovUrlWithQueryParameters(applicationProperties.getApiDataGovUrl(), name, city, state, zip, inStateCostRange, outStateCostRange, pageable, sort);
+        String dataGovUrl = DataGovUtil.generateDataGovUrlWithQueryParameters(applicationProperties.getApiDataGovUrl(), name, city, state, zip, inStateCostRange, outStateCostRange, distance, pageable, sort);
         HttpGet httpGet = new HttpGet(dataGovUrl);
         httpGet.addHeader("X-Api-Key", applicationProperties.getApiDataGovKey());
         log.info("UniversityLookupService.getUniversitiesBySearchCriteria() - Api.data.gov Url: " + dataGovUrl );

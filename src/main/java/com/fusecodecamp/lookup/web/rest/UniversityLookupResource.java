@@ -43,10 +43,11 @@ public class UniversityLookupResource {
                                                                                @RequestParam(value = "zip", required = false) String zip,
                                                                                @RequestParam(value = "inStateCostRange", required = false) String inStateCostRange,
                                                                                @RequestParam(value = "outStateCostRange", required = false) String outStateCostRange,
+                                                                               @RequestParam(value = "distance", required = false) String distance,
                                                                                @RequestParam(value = "sort", required = false) String sort,
                                                                                @ApiParam Pageable pageable) throws URISyntaxException, IOException {
 
-        final GovDataResponseDTO dataGovResponse = universityLookupService.getUniversitiesBySearchCriteria(name, city, state, zip, inStateCostRange, outStateCostRange, pageable, sort);
+        final GovDataResponseDTO dataGovResponse = universityLookupService.getUniversitiesBySearchCriteria(name, city, state, zip, inStateCostRange, outStateCostRange, distance, pageable, sort);
         HttpHeaders headers = DataGovUtil.generatePaginationHttpHeaders(dataGovResponse.getTotal(), dataGovResponse.getPage(), dataGovResponse.getPerPage(), "/api/universities");
         return new ResponseEntity<>(dataGovResponse.getUniversityDTOList(), headers, HttpStatus.OK);
     }
