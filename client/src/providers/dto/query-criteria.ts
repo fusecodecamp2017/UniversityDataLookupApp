@@ -12,4 +12,5 @@ export class QueryCriteria {
   outStateMaxTuition: number;
   sortField: string;
   sortOrder: string;
+  distance: string;
 }

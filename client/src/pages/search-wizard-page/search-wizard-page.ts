@@ -23,6 +23,7 @@ export class SearchWizardPage {
   city: string;
   state: string;
   zipCode: string;
+  distance: string;
 
   inStateMinTuition: number;
   inStateMaxTuition: number;
@@ -33,7 +34,7 @@ export class SearchWizardPage {
   sortField: string;
   sortOrder: string;
 
-  constructor(public navCtrl: NavController, public queryCriteria: QueryCriteria) {    
+  constructor(public navCtrl: NavController, public queryCriteria: QueryCriteria) {
   }
 
   ionViewDidLoad() {
@@ -63,6 +64,7 @@ export class SearchWizardPage {
     this.queryCriteria.outStateMaxTuition = this.outStateMaxTuition;
     this.queryCriteria.sortField = this.sortField;
     this.queryCriteria.sortOrder = this.sortOrder;
+	this.queryCriteria.distance = this.distance
 
     this.navCtrl.push(SearchWizardResultPage, this.queryCriteria);
   }

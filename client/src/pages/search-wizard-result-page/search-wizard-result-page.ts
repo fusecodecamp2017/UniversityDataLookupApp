@@ -29,12 +29,14 @@ export class SearchWizardResultPage {
     this.queryCriteria.city = navParams.get('city');
     this.queryCriteria.state = navParams.get('state');
     this.queryCriteria.zipCode = navParams.get('zipCode');
+    this.queryCriteria.distance = navParams.get('distance');
     this.queryCriteria.sortField = navParams.get('sortField');
     this.queryCriteria.sortOrder = navParams.get('sortOrder');
     this.queryCriteria.inStateMinTuition = navParams.get('inStateMinTuition');
     this.queryCriteria.inStateMaxTuition = navParams.get('inStateMaxTuition');
     this.queryCriteria.outStateMinTuition = navParams.get('outStateMinTuition');
     this.queryCriteria.outStateMaxTuition = navParams.get('outStateMaxTuition');
+
   }
 
   ionViewDidLoad() {
@@ -47,7 +49,7 @@ export class SearchWizardResultPage {
     this.loading.present();
 
     this.httpUniversityService.queryUniversities(this.queryCriteria)
-      .then((data) => { 
+      .then((data) => {
         this.universityData = data;
         for( var i = 0; i < this.universityData.length; i++ ) {
           var university = this.universityData[i];

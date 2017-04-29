@@ -40,16 +40,22 @@ export class HttpUniversityService {
       addedQueryParam = true;
     }
     if( queryCriteria.state ) {
-      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);     
+      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);
       queryUrl += 'state=';
       queryUrl += queryCriteria.state.replace(/ /g , "%20");
       addedQueryParam = true;
     }
     if( queryCriteria.zipCode ) {
-      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);     
+      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);
       queryUrl += 'zip=';
       queryUrl += queryCriteria.zipCode.replace(/ /g , "%20");
       addedQueryParam = true;
+	  if( queryCriteria.distance ) {
+  		queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);
+  		queryUrl += 'distance=';
+  		queryUrl += queryCriteria.distance;
+  		queryUrl += "mi";
+  	  }
     }
     if( queryCriteria.inStateMinTuition && queryCriteria.inStateMaxTuition ) {
       queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);
@@ -64,12 +70,12 @@ export class HttpUniversityService {
       addedQueryParam = true;
     }
     if( queryCriteria.sortField && queryCriteria.sortOrder ) {
-      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);   
+      queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);
       queryUrl += 'sort=';
       queryUrl += queryCriteria.sortField + ":" + queryCriteria.sortOrder;
       addedQueryParam = true;
     }
-    queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);     
+    queryUrl = this.appendQueryDelimiter(queryUrl, addedQueryParam);
     queryUrl += 'page=0&size=100';
 
     return this.http.get(queryUrl, {headers: this.headers}) // The Angular http.get returns an RxJS Observable. Observables are a powerful way to manage asynchronous data flows. You'll read about Observables later in this page.
