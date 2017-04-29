@@ -20,6 +20,8 @@ import { SafePipe } from './safe.pipe';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { QueryCriteria } from '../providers/dto/query-criteria';
+
 @NgModule({
   declarations: [ // Tells which components belong to the AppModule.
     MyApp,
@@ -54,6 +56,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     HttpUniversityService, // Make HttpService globally available.
     WindowRef,
+    QueryCriteria,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
