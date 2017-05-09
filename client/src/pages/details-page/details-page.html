@@ -19,6 +19,13 @@
   <ion-grid>
     <ion-row>
       <ion-col>
+        <sebm-google-map [latitude]="lat" [longitude]="lng" class="sebm-google-map-container">
+          <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+        </sebm-google-map>        
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
         <div class="label">Name:</div>
         <div class="data">{{ universityData.name }}</div>
       </ion-col>

@@ -14,6 +14,7 @@ import { DetailsPage } from '../pages/details-page/details-page';
 import { UnivWebsitePage } from '../pages/univ-website-page/univ-website-page';
 
 import { HttpUniversityService } from '../providers/http-university-service';
+import { MapService } from '../providers/map-service';
 import { WindowRef } from '../providers/window-ref';
 import { SafePipe } from './safe.pipe';
 
@@ -21,6 +22,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { QueryCriteria } from '../providers/dto/query-criteria';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 @NgModule({
   declarations: [ // Tells which components belong to the AppModule.
@@ -38,7 +40,10 @@ import { QueryCriteria } from '../providers/dto/query-criteria';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
-    HttpModule
+    HttpModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAtqwKLGrLS8Xhuaa6LHJ0TmTFK3NiMJ1g'
+    })
   ],
   bootstrap: [IonicApp], // IonicApp should be started first, with it's component tree created.
   entryComponents: [
@@ -55,6 +60,7 @@ import { QueryCriteria } from '../providers/dto/query-criteria';
     StatusBar,
     SplashScreen,
     HttpUniversityService, // Make HttpService globally available.
+    MapService,
     WindowRef,
     QueryCriteria,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

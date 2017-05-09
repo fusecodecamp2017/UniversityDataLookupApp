@@ -24,6 +24,11 @@ export class HttpUniversityService {
     this.headers.append('Accept', 'application/json');
   }
 
+  longLatByAddress(address: string) {
+    address = address.replace(/ /g , "%20");
+    var queryUrl = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyAtqwKLGrLS8Xhuaa6LHJ0TmTFK3NiMJ1g";
+  }
+
   queryUniversities(queryCriteria: QueryCriteria): Promise<UniversityData[]> {
     var addedQueryParam = false;
     var queryUrl = this.universityUrl;

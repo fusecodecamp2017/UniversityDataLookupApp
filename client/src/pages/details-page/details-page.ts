@@ -15,6 +15,8 @@ export class DetailsPage {
   private address: string;
   private universityData: UniversityData;
   private loading: Loading;
+  lat: number = 51.678418;
+  lng: number = 7.809007;  
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
